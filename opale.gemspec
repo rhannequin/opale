@@ -31,10 +31,10 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rake", "~> 13.0"
   spec.add_dependency "rspec", "~> 3.2"
+  spec.add_dependency "sorbet-runtime", "~> 0.5"
 
   spec.add_development_dependency "prettier", "~> 2.0"
+  spec.add_development_dependency "sorbet", "~> 0.5"
   spec.add_development_dependency "standard", "~> 1.3"
-
-  # For more information and examples about making a new gem, check out our
-  # guide at: https://bundler.io/guides/creating_gem.html
+  spec.add_development_dependency "tapioca", "~> 0.10"
 end
