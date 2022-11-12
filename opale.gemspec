@@ -37,4 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sorbet", "~> 0.5"
   spec.add_development_dependency "standard", "~> 1.3"
   spec.add_development_dependency "tapioca", "~> 0.10"
+  spec.add_development_dependency "webmock", "~> 3.18"
 end
