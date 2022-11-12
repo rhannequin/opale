@@ -1,17 +1,12 @@
 # frozen_string_literal: true
-# typed: strict
 
 require "json"
-require "net/http"
-require "sorbet-runtime"
 
 module Opale
   class Eclipse
-    extend T::Sig
+    HOST = "https://opale.imcce.fr"
+    PATH = "/api/v1/phenomena/eclipses/10/"
 
-    HOST = "https://opale.imcce.fr/api/v1/phenomena/eclipses/10/"
-
-    sig { params(date_str: String).returns(OpenStruct) }
     def self.get(date_str)
       uri = URI(HOST + date_str)
       JSON

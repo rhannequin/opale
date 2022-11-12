@@ -31,11 +31,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rake", "~> 13.0"
   spec.add_dependency "rspec", "~> 3.2"
-  spec.add_dependency "sorbet-runtime", "~> 0.5"
 
   spec.add_development_dependency "prettier", "~> 2.0"
-  spec.add_development_dependency "sorbet", "~> 0.5"
   spec.add_development_dependency "standard", "~> 1.3"
-  spec.add_development_dependency "tapioca", "~> 0.10"
   spec.add_development_dependency "webmock", "~> 3.18"
 end
