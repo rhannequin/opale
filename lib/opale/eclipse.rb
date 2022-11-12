@@ -11,10 +11,14 @@ module Opale
 
     HOST = "https://opale.imcce.fr/api/v1/phenomena/eclipses/10/"
 
-    sig { params(date_str: String).returns(T::Hash[T.untyped, T.untyped]) }
+    sig { params(date_str: String).returns(OpenStruct) }
     def self.get(date_str)
       uri = URI(HOST + date_str)
-      JSON.parse(Net::HTTP.get(uri))["response"]["data"].first
+      JSON
+        .parse(Net::HTTP.get(uri), object_class: OpenStruct)
+        .response
+        .data
+        .first
     end
   end
 end

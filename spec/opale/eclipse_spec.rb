@@ -21,7 +21,7 @@ RSpec.describe Opale::Eclipse do
         }.to_json
       )
 
-      expect(described_class.get(date_str)).to eq("calendarDate" => date_str)
+      expect(described_class.get(date_str).calendarDate).to eq(date_str)
     end
   end
 end
