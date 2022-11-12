@@ -9,7 +9,7 @@ RSpec.describe Opale::Eclipse do
 
       stub_request(
         :get,
-        "#{described_class::HOST}#{date_str}"
+        described_class::HOST + described_class::PATH + date_str
       ).to_return(
         status: 200,
         body: {

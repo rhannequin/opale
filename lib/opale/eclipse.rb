@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "faraday"
 require "json"
 
 module Opale
@@ -8,12 +9,13 @@ module Opale
     PATH = "/api/v1/phenomena/eclipses/10/"
 
     def self.get(date_str)
-      uri = URI(HOST + date_str)
-      JSON
-        .parse(Net::HTTP.get(uri), object_class: OpenStruct)
-        .response
-        .data
-        .first
+      conn = Faraday.new(
+        url: HOST,
+        headers: {"Content-Type": "application/json"}
+      )
+
+      response = conn.get(PATH + date_str)
+      JSON.parse(response.body, object_class: OpenStruct).response.data.first
     end
   end
 end
