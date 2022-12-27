@@ -3,24 +3,20 @@
 require "spec_helper"
 
 RSpec.describe Opale::Client do
-  describe "::eclipse" do
+  describe "#connection" do
     it "request the Opale API" do
       body = "301"
       date_str = "2016-09-01"
-      url = described_class::HOST + described_class::ECLIPSE_PATH + body + "/" + date_str
+      path = "phenomena/eclipses/#{body}/#{date_str}"
 
-      stub_request(:get, url).to_return(
+      stub_request(:get, described_class::BASE_URL + path).to_return(
         status: 200,
         body: {
-          "response" => {
-            "data" => [
-              "calendarDate" => date_str
-            ]
-          }
+          "response" => {"data" => [{"calendarDate" => date_str}]}
         }.to_json
       )
 
-      expect(described_class.eclipse(body, date_str).calendarDate).to eq(date_str)
+      expect { described_class.new.connection.get(path) }.not_to raise_error
     end
   end
 end
